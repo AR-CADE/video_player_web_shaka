@@ -1,10 +1,8 @@
 name: video_player_web_shaka
-description: Web platform implementation of video_player and supports shaka on chrome and other browsers.
+description: Web platform implementation of video_player and supports hls, dash and mss.
 homepage: https://github.com/AR-CADE/video_player_web_shaka
-# 0.1.y+z is compatible with 1.0.0, if you land a breaking change bump
-# the version to 2.0.0.
-# See more details: https://github.com/flutter/flutter/wiki/Package-migration-to-1.0.0
-version: 1.1.0
+publish_to: 'none' 
+version: 1.0.0
 
 flutter:
   plugin:
