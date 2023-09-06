@@ -131,7 +131,8 @@ class VideoAppState extends State<VideoApp> {
     );
 
     final uri32 = Uri.parse(
-        'http://playready.directtaps.net/smoothstreaming/SSWSS720H264/SuperSpeedway_720.ism/Manifest');
+      'http://playready.directtaps.net/smoothstreaming/SSWSS720H264/SuperSpeedway_720.ism/Manifest',
+    );
 
     try {
       _controller = VideoPlayerController.networkUrl(
