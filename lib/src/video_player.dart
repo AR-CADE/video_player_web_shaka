@@ -122,9 +122,6 @@ class VideoPlayer {
           }),
         );
 
-        await _shaka!.attach(_videoElement);
-        await _shaka!.load(uri);
-
         _shaka!.addEventListener(
           'error',
           onError,
@@ -137,6 +134,9 @@ class VideoPlayer {
           }
           setBuffering(false);
         });
+
+        await _shaka!.attach(_videoElement);
+        await _shaka!.load(uri);
       } catch (e) {
         throw NoScriptTagException();
       }
