@@ -67,8 +67,6 @@ Here's an abridged version of the data from caniuse, for a Global audience:
 [![Data on Global support for the HEVC/H.265 video format](https://caniuse.bitsofco.de/image/hevc.png)](https://caniuse.com/#feat=hevc)
 
 
-[1]: ../video_player
-
 ## Example
 
 ```dart
@@ -132,3 +130,8 @@ class _VideoAppState extends State<VideoApp> {
   }
 }
 ```
+
+## Some reading
+https://bitmovin.com/mpeg-dash-vs-apple-hls-vs-microsoft-smooth-streaming-vs-adobe-hds/ 
+
+https://blog.eleven-labs.com/fr/video-live-dash-hls/ 
