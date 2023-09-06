@@ -282,6 +282,10 @@ class VideoPlayer {
 
   /// Disposes of the current [html.VideoElement].
   void dispose() {
+    _shaka!.removeEventListener(
+      'error',
+      onError,
+    );
     _videoElement
       ..removeEventListener('durationchange', _durationChange)
       ..removeAttribute('src')

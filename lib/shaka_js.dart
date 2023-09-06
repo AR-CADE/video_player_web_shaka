@@ -43,11 +43,16 @@ class ShakaPlayer {
   @JS()
   external NetworkEngine getNetworkingEngine();
 
-  /// As for now, it is used only for catch errors
   @JS()
   external void addEventListener(
     String event,
-    void Function(ShakaError) callback,
+    Function callback,
+  );
+
+  @JS()
+  external void removeEventListener(
+    String event,
+    Function callback,
   );
 
   @JS()
