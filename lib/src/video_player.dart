@@ -369,6 +369,10 @@ class VideoPlayer {
     }
   }
 
+  bool _canPlayMss() {
+    return false;
+  }
+
   Future<bool> _shouldUseShakaLibrary() async {
     if (!_isShakaSupported) {
       return false;
@@ -388,12 +392,21 @@ class VideoPlayer {
       return true;
     }
 
+    if (_isMss) {
+      if (_canPlayMss()) {
+        return false;
+      }
+      return true;
+    }
+
     return _testIfHlsOrMpd();
   }
 
-  bool get _isHls => uri.contains('m3u8');
+  bool get _isHls => uri.toLowerCase().contains('m3u8');
 
-  bool get _isDash => uri.contains('mpd');
+  bool get _isDash => uri.toLowerCase().contains('mpd');
+
+  bool get _isMss => uri.toLowerCase().contains('ism');
 
   bool get _isShakaSupported => Shaka.Player.isBrowserSupported();
 
@@ -414,8 +427,8 @@ class VideoPlayer {
       final response = await http.get(Uri.parse(uri), headers: headers);
       final body = response.body;
 
-      if (_isHlsBody(body) || _isDashBody(body)) {
-        return false;
+      if (_isHlsBody(body) || _isDashBody(body) || _isMssBody(body)) {
+        return true;
       }
       return false;
     } catch (e) {
@@ -427,4 +440,7 @@ class VideoPlayer {
 
   bool _isDashBody(String body) =>
       body.startsWith('<?xml') && body.contains('<MPD');
+
+  bool _isMssBody(String body) =>
+      body.startsWith('<?xml') && body.contains('<SmoothStreamingMedia');
 }

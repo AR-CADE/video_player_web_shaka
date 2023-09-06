@@ -130,6 +130,9 @@ class VideoAppState extends State<VideoApp> {
       'http://amssamples.streaming.mediaservices.windows.net/91492735-c523-432b-ba01-faba6c2206a2/AzureMediaServicesPromo.ism/manifest(format=m3u8-aapl)',
     );
 
+    final uri32 = Uri.parse(
+        'http://playready.directtaps.net/smoothstreaming/SSWSS720H264/SuperSpeedway_720.ism/Manifest');
+
     try {
       _controller = VideoPlayerController.networkUrl(
         uri0,
