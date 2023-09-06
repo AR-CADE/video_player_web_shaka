@@ -1,7 +1,6 @@
 # video_player_web_shaka
-[![Version](https://img.shields.io/pub/v/video_player_web_shaka.svg)](https://pub.dev/packages/video_player_web_shaka)
 
-Supports hls on chrome and other browsers.
+Web platform implementation of video_player and supports hls, dash and mss. Forked from [video_player_web_hls](https://github.com/balvinderz/video_player_web_hls)
 
 
 
@@ -12,20 +11,22 @@ Supports hls on chrome and other browsers.
 ...
 dependencies:
   ...
-  video_player_web_shaka: ^0.1.1
-  video_player: ^0.10.10
+  video_player: ^2.7.1
+  video_player_web_shaka: 
+    git:
+      url: https://github.com/AR-CADE/video_player_web_shaka.git
 
   ...
 ```
 
  Add
 ```javascript
- <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"  type="application/javascript"></script>
+ <script src="https://cdn.jsdelivr.net/npm/shaka-player@4.4.1/dist/shaka-player.compiled.min.js"  type="application/javascript"></script>
  ```
  
  in index.html above   
 ```javascript
- <script src="main.dart.js" type="application/javascript"></script>
+ <script src="main.dart.js (or flutter.js)" type="application/javascript"></script>
 ```
  
 ## dart:io
