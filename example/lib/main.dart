@@ -23,7 +23,9 @@ class VideoAppState extends State<VideoApp> {
   void initState() {
     super.initState();
 
-    shaka.configure(<String, Object>{'streaming.autoLowLatencyMode': true});
+    shaka.configure({
+      'streaming': {'autoLowLatencyMode': true},
+    });
 
     final uri0 = Uri.parse(
       'https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/6304f20c941c5d00089634e7/master.m3u8?advertisingId&appName=web&terminate=false&appVersion=1&architecture&buildVersion&clientTime&deviceDNT=false&deviceId=d2ac77c8-fa01-4393-b7db-7560473c8809&deviceLat=0&deviceLon=0&deviceMake=flutter&deviceModel=web&deviceType=web&deviceVersion=flutter_current_version&includeExtendedEvents=false&marketingRegion=EARTH&country=EARTH&serverSideAds=false&sid=987b6e06-c93b-412c-a8f3-12bcf7dee920&clientID=d2ac77c8-fa01-4393-b7db-7560473c8809&clientModelNumber=1.0.0&clientDeviceType=0&sessionID&userId',

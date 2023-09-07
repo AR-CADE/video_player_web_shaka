@@ -47,7 +47,7 @@ class VideoPlayer {
     required html.VideoElement videoElement,
     required this.uri,
     required this.headers,
-    required this.options,
+    this.config,
     @visibleForTesting StreamController<VideoEvent>? eventController,
   })  : _videoElement = videoElement,
         _eventController = eventController ?? StreamController<VideoEvent>();
@@ -56,7 +56,7 @@ class VideoPlayer {
   final html.VideoElement _videoElement;
   final String uri;
   final Map<String, String> headers;
-  final Map<String, Object> options;
+  final Map<String, dynamic>? config;
 
   bool _isInitialized = false;
   bool _isBuffering = false;
@@ -102,7 +102,9 @@ class VideoPlayer {
       try {
         _shaka = ShakaPlayer(null);
 
-        options.forEach((key, value) => _shaka!.configure(key, value));
+        if (config != null) {
+          _shaka!.configure(config!);
+        }
 
         await _shaka!.getNetworkingEngine().registerRequestFilter(
           allowInterop((_, ShakaHttpRequest request, __) {

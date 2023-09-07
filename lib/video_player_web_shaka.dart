@@ -29,7 +29,7 @@ class VideoPlayerPluginShaka extends VideoPlayerPlatform {
   int _textureCounter = 1;
 
   // Map of shaka configuration option
-  static Map<String, Object>? options;
+  static Map<String, dynamic>? config;
 
   @override
   Future<void> init() async {
@@ -109,7 +109,7 @@ class VideoPlayerPluginShaka extends VideoPlayerPlatform {
       videoElement: videoElement,
       uri: uri,
       headers: headers ?? <String, String>{},
-      options: VideoPlayerPluginShaka.options ?? <String, Object>{},
+      config: VideoPlayerPluginShaka.config,
     );
 
     await player.initialize();

@@ -32,7 +32,7 @@ class ShakaPlayer {
   external Future<void> attach(VideoElement video);
 
   @JS()
-  external bool configure(String config, Object value);
+  external bool configure(Map<String, dynamic> config);
 
   @JS()
   external void attachCanvas(CanvasElement canvas);
