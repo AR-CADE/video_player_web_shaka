@@ -45,18 +45,21 @@ class VideoPlayer {
   /// Create a [VideoPlayer] from a [html.VideoElement] instance.
   VideoPlayer({
     required html.VideoElement videoElement,
-    required this.uri,
-    required this.headers,
-    this.config,
+    required String uri,
+    required Map<String, String> headers,
+    Map<String, dynamic>? config,
     @visibleForTesting StreamController<VideoEvent>? eventController,
   })  : _videoElement = videoElement,
-        _eventController = eventController ?? StreamController<VideoEvent>();
+        _eventController = eventController ?? StreamController<VideoEvent>(),
+        _uri = uri,
+        _headers = headers,
+        _config = config;
 
   final StreamController<VideoEvent> _eventController;
   final html.VideoElement _videoElement;
-  final String uri;
-  final Map<String, String> headers;
-  final Map<String, dynamic>? config;
+  final String _uri;
+  final Map<String, String> _headers;
+  final Map<String, dynamic>? _config;
 
   bool _isInitialized = false;
   bool _isBuffering = false;
@@ -102,17 +105,17 @@ class VideoPlayer {
       try {
         _shaka = ShakaPlayer(null);
 
-        if (config != null) {
-          _shaka!.configure(config!);
+        if (_config != null) {
+          _shaka!.configure(_config!);
         }
 
         await _shaka!.getNetworkingEngine().registerRequestFilter(
           allowInterop((_, ShakaHttpRequest request, __) {
-            if (headers.isEmpty) {
+            if (_headers.isEmpty) {
               return request;
             }
 
-            headers.forEach((String key, String value) {
+            _headers.forEach((String key, String value) {
               if (key != 'useCookies') {
                 setProperty<String>(request.headers, key, value);
               } else {
@@ -138,13 +141,13 @@ class VideoPlayer {
         });
 
         await _shaka!.attach(_videoElement);
-        await _shaka!.load(uri);
+        await _shaka!.load(_uri);
       } catch (e) {
         throw NoScriptTagException();
       }
     } else {
       _videoElement
-        ..src = uri
+        ..src = _uri
         ..addEventListener('durationchange', _durationChange);
     }
 
@@ -408,17 +411,17 @@ class VideoPlayer {
     return _testIfHlsOrMpd();
   }
 
-  bool get _isHls => uri.toLowerCase().contains('m3u8');
+  bool get _isHls => _uri.toLowerCase().contains('m3u8');
 
-  bool get _isDash => uri.toLowerCase().contains('mpd');
+  bool get _isDash => _uri.toLowerCase().contains('mpd');
 
-  bool get _isMss => uri.toLowerCase().contains('ism');
+  bool get _isMss => _uri.toLowerCase().contains('ism');
 
   bool get _isShakaSupported => Shaka.Player.isBrowserSupported();
 
   Future<bool> _testIfHlsOrMpd() async {
     try {
-      final headers = Map<String, String>.of(this.headers);
+      final headers = Map<String, String>.of(this._headers);
       if (headers.containsKey('Range') || headers.containsKey('range')) {
         final range = (headers['Range'] ?? headers['range'])!
             .split('bytes')[1]
@@ -430,7 +433,7 @@ class VideoPlayer {
       } else {
         headers['Range'] = 'bytes=0-1023';
       }
-      final response = await http.get(Uri.parse(uri), headers: headers);
+      final response = await http.get(Uri.parse(_uri), headers: headers);
       final body = response.body;
 
       if (_isHlsBody(body) || _isDashBody(body) || _isMssBody(body)) {
