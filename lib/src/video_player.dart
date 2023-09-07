@@ -421,7 +421,7 @@ class VideoPlayer {
 
   Future<bool> _testIfHlsOrMpd() async {
     try {
-      final headers = Map<String, String>.of(this._headers);
+      final headers = Map<String, String>.of(_headers);
       if (headers.containsKey('Range') || headers.containsKey('range')) {
         final range = (headers['Range'] ?? headers['range'])!
             .split('bytes')[1]
