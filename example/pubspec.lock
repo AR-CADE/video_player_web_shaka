@@ -265,10 +265,10 @@ packages:
     dependency: transitive
     description:
       name: video_player_web
-      sha256: "68bdd115389d68aea99466259b079a5ef3fa9ca7600ef12b616d8551fa1541a9"
+      sha256: "66fc0d56554143fee4c623f70e45e4272b94fd246283cb67edabb9d1e4122a4f"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.18"
+    version: "2.1.0"
   video_player_web_shaka:
     dependency: "direct main"
     description:
@@ -285,5 +285,5 @@ packages:
     source: hosted
     version: "0.1.4-beta"
 sdks:
-  dart: ">=3.1.0 <4.0.0"
-  flutter: ">=3.13.2"
+  dart: ">=3.1.1 <4.0.0"
+  flutter: ">=3.13.3"
