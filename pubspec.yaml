@@ -2,7 +2,7 @@ name: video_player_web_shaka
 description: Web platform implementation of video_player and supports hls, dash and mss.
 homepage: https://github.com/AR-CADE/video_player_web_shaka
 publish_to: 'none' 
-version: 1.0.4
+version: 1.0.5
 
 flutter:
   plugin:
