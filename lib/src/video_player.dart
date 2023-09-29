@@ -28,8 +28,11 @@ const Map<int, String> _kErrorValueToErrorName = <int, String>{
 // See: https://developer.mozilla.org/en-US/docs/Web/API/MediaError/code
 const Map<int, String> _kErrorValueToErrorDescription = <int, String>{
   1: 'The user canceled the fetching of the video.',
+  // ignore: lines_longer_than_80_chars
   2: 'A network error occurred while fetching the video, despite having previously been available.',
+  // ignore: lines_longer_than_80_chars
   3: 'An error occurred while trying to decode the video, despite having previously been determined to be usable.',
+  // ignore: lines_longer_than_80_chars
   4: 'The video has been found to be unsuitable (missing or in a format not supported by your browser).',
   5: 'Could not load manifest',
 };
