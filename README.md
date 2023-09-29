@@ -1,6 +1,6 @@
 # video_player_web_shaka
 
-Web platform implementation of video_player and supports hls, dash and mss. Forked from [video_player_web_hls](https://github.com/balvinderz/video_player_web_hls)
+Web platform implementation of video_player and supports hls, dash and mss. Inspired from [video_player_web_hls](https://github.com/balvinderz/video_player_web_hls)
 
 
 
@@ -21,7 +21,7 @@ dependencies:
 
  Add
 ```javascript
- <script src="https://cdn.jsdelivr.net/npm/shaka-player@4.4.1/dist/shaka-player.compiled.min.js"  type="application/javascript"></script>
+ <script src="https://cdn.jsdelivr.net/npm/shaka-player@4.4.2/dist/shaka-player.compiled.min.js"  type="application/javascript"></script>
  ```
  
  in index.html above   
