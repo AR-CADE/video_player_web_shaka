@@ -18,27 +18,21 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.1.0 <4.0.0"
-  flutter: ">=3.13.2 <=4.0.0"
+  sdk: ">=3.2.3 <4.0.0"
+  flutter: ">=3.16.4 <=4.0.0"
 
 
 dependencies:
   flutter:
     sdk: flutter
-  video_player: ^2.7.2
+  video_player: ^2.8.1
   video_player_web_shaka:
     path: ../
 
 dev_dependencies:
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
-  flutter_lints: ^2.0.3
-
   flutter_test:
     sdk: flutter
+  very_good_analysis: ^5.1.0
 
 flutter:
   uses-material-design: true
