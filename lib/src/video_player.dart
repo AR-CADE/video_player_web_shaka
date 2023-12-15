@@ -109,7 +109,7 @@ class VideoPlayer {
         _shaka = ShakaPlayer(null);
 
         if (_config != null) {
-          _shaka!.configure(_config!);
+          _shaka!.configure(_config);
         }
 
         await _shaka!.getNetworkingEngine().registerRequestFilter(
