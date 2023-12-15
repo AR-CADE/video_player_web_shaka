@@ -416,7 +416,9 @@ class VideoPlayer {
 
   bool get _isHls => _uri.toLowerCase().contains('m3u8');
 
-  bool get _isDash => _uri.toLowerCase().contains('mpd');
+  bool get _isDash =>
+      _uri.toLowerCase().contains('mpd') ||
+      _uri.toLowerCase().contains('manifest');
 
   bool get _isMss => _uri.toLowerCase().contains('ism');
 
